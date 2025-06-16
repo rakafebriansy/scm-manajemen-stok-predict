@@ -38,6 +38,7 @@ def predict_next_days(produk, days=7):
     # Generate dates
     last_date = smoothed.index[-1]
     future_dates = pd.date_range(start=last_date + pd.Timedelta(days=1), periods=days)
-    result = dict(zip(future_dates.strftime('%Y-%m-%d'), np.round(future_pred, 2)))
+    result = {date: float(pred) for date, pred in zip(future_dates.strftime('%Y-%m-%d'), np.round(future_pred, 2))}
+    # result = dict(zip(future_dates.strftime('%Y-%m-%d'), np.round(future_pred, 2)))
 
     return result
