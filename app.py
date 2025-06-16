@@ -4,7 +4,6 @@ from predict import predict_next_days
 
 app = Flask(__name__)
 
-# Daftar produk yang tersedia dari folder saved_models
 def get_available_products():
     return sorted(set(f.split('_model.h5')[0] for f in os.listdir('saved_models') if f.endswith('_model.h5')))
 
